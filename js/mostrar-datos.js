@@ -32,9 +32,7 @@ function mostrarDatos() {
                 
                 <tr>
                     
-                    <th>
-                    
-                    <img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
+                    <th><img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
                     <th>
                         <form action="?c=user&m=save" method="post">
                             <input type="hidden" name="idbienes" value="${item.Id}"></br>

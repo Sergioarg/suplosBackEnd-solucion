@@ -69,7 +69,7 @@
                     <strong></strong>
                     <th></th>
                     <th></th>
-                </tr>
+                 </tr>
                 </thead>
                 <tbody id="resultados">
 
@@ -90,22 +90,18 @@
           <div class="tituloContenido card" style="justify-content: center;">
             <h5>Bienes guardados:</h5>
             <div>
-
-
             <table>
                 <thead>
-                  <tr>
+                  
                     <strong></strong>
                     <th></th>
                     <th></th>
-                </tr>
+                  
                 </thead>
                 <tbody>
                   
-                    
                     <?php foreach($this->model->all() as $bien): ?>
-
-                      <th> <img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
+                      <th><img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
                         <th>
                             <i>Dirección: </i><strong><?php echo $bien->direccion ?></strong></br>
                             <i>Ciudad: </i><strong><?php echo $bien->ciudad ?></strong></br>
@@ -113,10 +109,9 @@
                             <i>Codigo Postal: </i><strong><?php echo $bien->codigo_postal ?></strong></br>
                             <i>Tipo: </i><strong><?php echo $bien->tipo ?></strong></br>
                             <i>Precio: </i><strong><?php echo $bien->precio ?></strong></br>
-                        <?php endforeach; ?>
-                  
+                        </th>
+                      <?php endforeach; ?>
                         
-                </th>
                 </tbody>
 
                 </table>
@@ -126,10 +121,6 @@
               </div>
               <div class="divider">
               </div>
-              
-              
-           
-
           </div>
         </div>
       </div>

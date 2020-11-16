@@ -22,7 +22,8 @@
 
 			$user = new User();
 			$user->nuevoBien($_REQUEST);
-			header('Location:index.html');
+			require 'inicio.php';
+			
 		}
 	}
 

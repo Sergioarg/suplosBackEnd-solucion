@@ -22,13 +22,12 @@
       <h1>Bienes Intelcost</h1>
     </div>
     <div class="colFiltros">
-      <form action="" method="post" id="formulario">
         <div class="filtrosContenido">
           <div class="tituloFiltros">
             <h5>Filtros</h5>
           </div>
           <div class="filtroCiudad input-field">
-            <p><label for="selectCiudad">Ciudad:</label><br></p>
+            <p><label for="">Ciudad:</label><br></p>
             <select name="ciudad" id="selectCiudad">
               <!-- <option value="" selected>Elige una ciudad</option> -->
             </select>
@@ -36,9 +35,8 @@
           <div class="filtroTipo input-field">
             <p><label for="selecTipo">Tipo:</label></p>
             <br>
-            <select name="tipo" id="selectTipo">
+            <select name="tipo" id="selectTipo"   >
               <!-- <option value="">Elige un tipo</option> -->
-             
             </select>
           </div>
           <div class="filtroPrecio">
@@ -46,10 +44,9 @@
             <input type="text" id="rangoPrecio" name="precio" value="" />
           </div>
           <div class="botonField">
-            <input type="submit" class="btn white" value="Buscar" id="filtrar">
+            <input type="submit" class="btn white" onclick="buscar()" value="buscar" id="buscar">
           </div>
         </div>
-      </form>
     </div>
     <div id="tabs" style="width: 75%;">
       <ul>
@@ -92,14 +89,11 @@
             <div>
             <table>
                 <thead>
-                  
                     <strong></strong>
                     <th></th>
                     <th></th>
-                  
                 </thead>
                 <tbody>
-                  
                     <?php foreach($this->model->all() as $bien): ?>
                       <th><img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
                         <th>
@@ -111,13 +105,9 @@
                             <i>Precio: </i><strong><?php echo $bien->precio ?></strong></br>
                         </th>
                       <?php endforeach; ?>
-                        
                 </tbody>
-
-                </table>
+              </table>
               <!-- tabla de todos los resultados -->
-              
-                             
               </div>
               <div class="divider">
               </div>

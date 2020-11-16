@@ -1,11 +1,14 @@
 var temp = 0;
 var val = true;
 
+var selectedOptionC;
+var selectedOptionT;
+
 // MOSTRAR LAS CASAS Y SU INFORMACIÓN.
 
 document.querySelector('#mostrar').addEventListener('click', mostrarDatos);
 
-function mostrarDatos() {
+function mostrarDatos(val1) {
 
     const xhttp = new XMLHttpRequest();
 
@@ -14,40 +17,62 @@ function mostrarDatos() {
     xhttp.send();
     
     xhttp.onreadystatechange = function(){
+
         if (this.readyState == 4 && this.status == 200) {
 
             let datos = JSON.parse(this.responseText);
             
             let resultados = document.querySelector('#resultados');
-            let form = document.querySelector('#resultados');
-            
 
             resultados.innerHTML = '';
             
-            
-            // </form>
             for(let item of datos){
                 
-                resultados.innerHTML += `
-                
-                <tr>
-                    
-                    <th><img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
-                    <th>
-                        <form action="?c=user&m=save" method="post">
-                            <input type="hidden" name="idbienes" value="${item.Id}"></br>
-                            <i>Dirección:<input type="hidden" name="direccion" value="${item.Direccion}"> </i><strong>${item.Direccion}</strong></br>
-                            <i>Ciudad: <input type="hidden" name="ciudad" value="${item.Ciudad}"></i><strong>${item.Ciudad}</strong></br>
-                            <i>Telefono: <input type="hidden" name="telefono" value="${item.Telefono}"></i><strong>${item.Telefono}</strong></br>
-                            <i>Codigo Postal: <input type="hidden" name="codigo_postal" value="${item.Codigo_Postal}"></i><strong>${item.Codigo_Postal}</strong></br>
-                            <i>Tipo: <input type="hidden" name="tipo" value="${item.Tipo}"></i><strong>${item.Tipo}</strong></br>
-                            <i>Precio: <input type="hidden" name="precio" value="${item.Precio}"></i><strong>${item.Precio}</strong></br>
-                            <button type="submit" class="btn">GUARDAR</button>
-                        </form>
-                    </th>
+                if (val1 == 't') {
+                    if(item.Ciudad == selectedOptionC.value && item.Tipo == selectedOptionT.value){
                         
-                    </tr>
-               `
+                        resultados.innerHTML += `
+                    
+                                        <tr>
+                                           <th><img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
+                                            <th>
+                                                <form action="?c=user&m=save" method="post">
+                                                    <input type="hidden" name="idbienes" value="${item.Id}"></br>
+                                                    <i>Dirección:<input type="hidden" name="direccion" value="${item.Direccion}"> </i><strong>${item.Direccion}</strong></br>
+                                                    <i>Ciudad: <input type="hidden" name="ciudad" value="${item.Ciudad}"></i><strong>${item.Ciudad}</strong></br>
+                                                    <i>Telefono: <input type="hidden" name="telefono" value="${item.Telefono}"></i><strong>${item.Telefono}</strong></br>
+                                                    <i>Codigo Postal: <input type="hidden" name="codigo_postal" value="${item.Codigo_Postal}"></i><strong>${item.Codigo_Postal}</strong></br>
+                                                    <i>Tipo: <input type="hidden" name="tipo" value="${item.Tipo}"></i><strong>${item.Tipo}</strong></br>
+                                                    <i>Precio: <input type="hidden" name="precio" value="${item.Precio}"></i><strong>${item.Precio}</strong></br>
+                                                    <button type="submit" class="btn">GUARDAR</button>
+                                                </form>
+                                            </th>
+                                        </tr>
+                                    `
+                    }
+                }else{
+
+                    resultados.innerHTML += `
+                    
+                    <tr>
+                        
+                        <th><img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
+                        <th>
+                            <form action="?c=user&m=save" method="post">
+                                <input type="hidden" name="idbienes" value="${item.Id}"></br>
+                                <i>Dirección:<input type="hidden" name="direccion" value="${item.Direccion}"> </i><strong>${item.Direccion}</strong></br>
+                                <i>Ciudad: <input type="hidden" name="ciudad" value="${item.Ciudad}"></i><strong>${item.Ciudad}</strong></br>
+                                <i>Telefono: <input type="hidden" name="telefono" value="${item.Telefono}"></i><strong>${item.Telefono}</strong></br>
+                                <i>Codigo Postal: <input type="hidden" name="codigo_postal" value="${item.Codigo_Postal}"></i><strong>${item.Codigo_Postal}</strong></br>
+                                <i>Tipo: <input type="hidden" name="tipo" value="${item.Tipo}"></i><strong>${item.Tipo}</strong></br>
+                                <i>Precio: <input type="hidden" name="precio" value="${item.Precio}"></i><strong>${item.Precio}</strong></br>
+                                <button type="submit" class="btn">GUARDAR</button>
+                            </form>
+                        </th>
+                            
+                        </tr>
+                   `
+                }
             }
             
         }
@@ -92,10 +117,8 @@ function mostrarCiudades() {
                             val = false;
                             break;
                         }
-                        
                     }
                     if (val == true) {
-                        // console.log(ciudad.Ciudad);
                         ciudades.push(ciudad.Ciudad);
                     }else{
                         val = true;
@@ -164,7 +187,7 @@ function mostrarTipos() {
                     }
                 }
             }
-            selectTipo.innerHTML += `<option>Elige un tipo</option>`;
+            selectTipo.innerHTML += `<option value="">Elige un tipo</option>`;
 
             for(let i = 0; i < tipos.length; i++){
                 
@@ -173,5 +196,21 @@ function mostrarTipos() {
         }
     }
 }
+
+
+function buscar() {
+    
+    // Valores del la seleccion ciuadad.
+    var ciudad = document.getElementById('selectCiudad');
+    selectedOptionC = ciudad.options[ciudad.selectedIndex];
+    
+    // Valores de le seleccion tipo.
+    var tipo = document.getElementById('selectTipo');
+    selectedOptionT = tipo.options[tipo.selectedIndex];
+
+    mostrarDatos('t');
+
+}
+
 
 

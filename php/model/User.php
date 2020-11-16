@@ -1,8 +1,4 @@
 <?php
-	/**
-	* Clase Usuario
-	* En este archivo realizo todos los querys a utilizar en la BD.
-	*/
 
 	class User
 	{
@@ -17,7 +13,6 @@
 				die($e->getMessage());
 			}
 		}
-
 		
 		public function all()
 		{

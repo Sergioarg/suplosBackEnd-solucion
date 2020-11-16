@@ -19,11 +19,9 @@
 		
 		public function save()
 		{
-
 			$user = new User();
 			$user->nuevoBien($_REQUEST);
 			require 'inicio.php';
-			
 		}
 	}
 

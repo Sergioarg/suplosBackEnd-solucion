@@ -90,25 +90,45 @@
           <div class="tituloContenido card" style="justify-content: center;">
             <h5>Bienes guardados:</h5>
             <div>
+
+
+            <table>
+                <thead>
+                  <tr>
+                    <strong></strong>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                  
+                    
+                    <?php foreach($this->model->all() as $bien): ?>
+
+                      <th> <img class="responsive-img" width="175" height="175" src="img/home.jpg"></th>
+                        <th>
+                            <i>Dirección: </i><strong><?php echo $bien->direccion ?></strong></br>
+                            <i>Ciudad: </i><strong><?php echo $bien->ciudad ?></strong></br>
+                            <i>Telefono: </i><strong><?php echo $bien->telefono ?></strong></br>
+                            <i>Codigo Postal: </i><strong><?php echo $bien->codigo_postal ?></strong></br>
+                            <i>Tipo: </i><strong><?php echo $bien->tipo ?></strong></br>
+                            <i>Precio: </i><strong><?php echo $bien->precio ?></strong></br>
+                        <?php endforeach; ?>
+                  
+                        
+                </th>
+                </tbody>
+
+                </table>
               <!-- tabla de todos los resultados -->
-              <?php $inc = 0; foreach($this->model->all() as $user): ?>
-                            <tr>
-                                <td class="v<?php echo $inc; ?>"><?php echo $user->idbienes ?></td>
-                                <td class="v<?php echo $inc; ?>"><?php echo $user->direccion ?></td>
-                                <td class="v<?php echo $inc; ?>"><?php echo $user->ciudad ?></td>
-                                <td class="v<?php echo $inc; ?>"><?php echo $user->telefono ?></td>
-                                <td class="v<?php echo $inc; ?>"><?php echo $user->codigo_postal ?></td>
-                                <td class="v<?php echo $inc; ?>"><?php echo $user->precio ?></td>
-                                
-                                <td>
-                                    <a href="#editModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar" id="v<?php echo $inc; ?>"  onclick="editar(this.id)" >&#xE254;</i></a>
-                                    <a href="#delete" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"  id="<?php echo $user->ID ?>" onclick="obtenerId(this.id)" title="Eliminar">&#xE872;</i></a>
-                                </td>
-                            </tr>						
-                        <?php $inc++; endforeach; ?>           </div>
               
-            <div class="divider" >
-            </div>
+                             
+              </div>
+              <div class="divider">
+              </div>
+              
+              
+           
 
           </div>
         </div>

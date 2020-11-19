@@ -53,7 +53,21 @@
 			}
 		}
 
-	
+		public function validarId($id)
+        {
+            try {
+                $query = $this->pdo->prepare("SELECT * FROM bienes WHERE idbienes = '$id' ");
+                $query->execute();
+                $query->fetchAll(PDO::FETCH_ASSOC);
+
+                if ($query->rowCount()) {
+                    return true; 
+                   }
+               else{ 
+                   return false;
+               }
+           } catch (Exception $e) {}
+		}
 			
 
 }

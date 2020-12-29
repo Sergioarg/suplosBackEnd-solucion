@@ -38,14 +38,13 @@
 						->execute(
 							array(
 							
-								$data= $_POST['idbienes'],
-								$data= $_POST['direccion'],
-								$data= $_POST['ciudad'],
-								$data= $_POST['telefono'],
-								$data= $_POST['codigo_postal'],
-								$data= $_POST['tipo'],
-								$data= $_POST['precio']
-
+								$data = $_POST['idbienes'],
+								$data = $_POST['direccion'],
+								$data = $_POST['ciudad'],
+								$data = $_POST['telefono'],
+								$data = $_POST['codigo_postal'],
+								$data = $_POST['tipo'],
+								$data = $_POST['precio']
 							)
 						);
 			} catch(Exception $e) {

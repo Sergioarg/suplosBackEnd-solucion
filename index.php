@@ -11,7 +11,7 @@
 		$controller = ucwords($controller);
 		$controller = new $controller;
 		$controller->index();
-	} else {
+		} else {
 		//Obtención de Controlador que queremos cargar
 		$controller = ucwords($_REQUEST['c']).'Controller';
 		//condicional paternario
